@@ -1,21 +1,21 @@
 package br.sc.senac.dw.model.entidade;
 
-import org.springframework.data.annotation.Id;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "produtos")
 public class Produto {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private double preco;
-    private String marca;
-    
+    private double valor;
+    private String fabricante;
 	public Long getId() {
 		return id;
 	}
@@ -28,18 +28,19 @@ public class Produto {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public double getPreco() {
-		return preco;
+	public double getValor() {
+		return valor;
 	}
-	public void setPreco(double preco) {
-		this.preco = preco;
+	public void setValor(double valor) {
+		this.valor = valor;
 	}
-	public String getMarca() {
-		return marca;
+	public String getFabricante() {
+		return fabricante;
 	}
-	public void setMarca(String marca) {
-		this.marca = marca;
+	public void setFabricante(String fabricante) {
+		this.fabricante = fabricante;
 	}
+    
 	
 
 }
