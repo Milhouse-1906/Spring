@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import ProdutoSpecifications.ProdutoSpecification;
+import Seletor.ProdutoSeletor;
 import br.sc.senac.dw.model.entidade.Produto;
 import br.sc.senac.dw.model.repository.ProdutoRepository;
 
@@ -23,8 +26,10 @@ public class ProdutoService {
         return produtoRepository.findById(id);
     }
 
-//    public List<Produto> buscarPorSeletor(ProdutoSeletor seletor) {
-//    }
+    public List<Produto> buscarPorSeletor(ProdutoSeletor seletor) {
+    	Specification<Produto> specification = ProdutoSpecification.comFiltros(seletor);
+		return produtoRepository.findAll(specification);
+    }
 
     public Produto inserir(Produto produto) {
         return produtoRepository.save(produto);
